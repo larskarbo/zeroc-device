@@ -5,7 +5,9 @@
   "license": "MIT",
   "dependencies": {
     "bleno": "^0.5.0",
-    "util": "^0.11.1",
+    "util": "^0.11.1"
+  },
+  "optionalDependencies":{
     "xpc-connection": "git://github.com/taoyuan/node-xpc-connection.git"
   }
 }
