@@ -21,4 +21,17 @@ bleno.on('stateChange', function (state) {
     }
 });
 
+bleno.on('advertisingStart', function (err) {
+    if (!err) {
+        console.log('advertising...');
+        //
+        // Once we are advertising, it's time to set up our services,
+        // along with our characteristics.
+        //
+        bleno.setServices([
+            pizzaService
+        ]);
+    }
+});
+
 console.log('yeah')
