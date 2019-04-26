@@ -52,7 +52,7 @@ SnakeCharacteristic.prototype.onReadRequest = function (offset, callback) {
         console.log('data: ', data.toJSON(this.cameraMan.isRecording));
         callback(this.RESULT_SUCCESS, data);
     }
-    cameraMan.onChange((r) => {
+    this.cameraMan.onChange((r) => {
         var data = new Buffer(1);
         data.writeUInt8(r, 0);
         this.updateValueCallback(data);
