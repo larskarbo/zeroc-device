@@ -42,12 +42,13 @@ SnakeCharacteristic.prototype.onWriteRequest = function (data, offset, withoutRe
 
 SnakeCharacteristic.prototype.onReadRequest = function (offset, callback) {
     console.log('readrequest')
+    console.log('offset: ', offset);
     if (offset) {
         callback(this.RESULT_ATTR_NOT_LONG, null);
     }
     else {
         var data = new Buffer(1);
-        data.writeUInt8("asdf", 0);
+        data.writeUInt8("asdf", 1);
         callback(this.RESULT_SUCCESS, data);
     }
 };
