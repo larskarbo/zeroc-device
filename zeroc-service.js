@@ -8,7 +8,7 @@ var SnakeCharacteristic = require('./snake-characteristic');
 
 function PizzaService() {
     bleno.PrimaryService.call(this, {
-        uuid: '172839853729012934871209384787',
+        uuid: '17283985372901293487120938478700',
         characteristics: [
             new SnakeCharacteristic(),
         ]
