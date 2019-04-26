@@ -14,10 +14,10 @@ class CameraMan {
     }
 
     onChange(callback){
-        // setInterval(() => {
-        //     callback(this.isRecording)
-        //     this.isRecording = !this.isRecording
-        // }, 1000)
+        setInterval(() => {
+            callback(this.isRecording)
+            this.isRecording = !this.isRecording
+        }, 1000)
     }
 
     async startRecording() {
