@@ -9,7 +9,7 @@ class CameraMan {
 
     }
 
-    onChange = (callback) => {
+    onChange(callback){
         setInterval(() => {
             callback(this.isRecording)
             this.isRecording = !this.isRecording
