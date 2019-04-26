@@ -7,10 +7,10 @@ class SnakeCharacteristic extends bleno.Characteristic {
             uuid: '17283985372901293487120938478701',
             properties: ['read', 'write', 'notify'],
             descriptors: [
-                new bleno.Descriptor({
-                    uuid: '1234',
-                    value: 'Starts video (?)'
-                })
+                // new bleno.Descriptor({
+                //     uuid: '1234',
+                //     value: 'Starts video (?)'
+                // })
             ]
         });
 
