@@ -1,9 +1,9 @@
 var bleno = require('bleno');
 
 var CameraMan = require("./video")
-var video = new Video()
+var cameraMan = new CameraMan()
 var VideoService = require('./zeroc-service');
-var videoService = new VideoService(CameraMan);
+var videoService = new VideoService(cameraMan);
 
 bleno.on('stateChange', function (state) {
     if (state === 'poweredOn') {
