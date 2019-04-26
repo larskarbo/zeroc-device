@@ -34,4 +34,13 @@ bleno.on('advertisingStart', function (err) {
     }
 });
 
+bleno.on('advertisingStartError', error => {
+    console.log('error :(')
+    console.log('error: ', error);
+};
+
+bleno.on('accept', ca => {
+    console.log('ca: ', ca);
+});
+
 console.log('yeah')
