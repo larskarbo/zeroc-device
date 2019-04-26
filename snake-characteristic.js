@@ -1,7 +1,7 @@
 var util = require('util');
 var bleno = require('bleno');
 
-function SnakeCharacteristic(pizza) {
+function SnakeCharacteristic(CameraMan) {
     bleno.Characteristic.call(this, {
         uuid: '17283985372901293487120938478701',
         properties: ['read', 'write'],
@@ -13,7 +13,7 @@ function SnakeCharacteristic(pizza) {
         ]
     });
 
-    this.pizza = pizza;
+    this.cameraMan = CameraMan;
 }
 
 util.inherits(SnakeCharacteristic, bleno.Characteristic);
@@ -47,7 +47,7 @@ SnakeCharacteristic.prototype.onReadRequest = function (offset, callback) {
         callback(this.RESULT_ATTR_NOT_LONG, null);
     }
     else {
-        var data = new Buffer(1);
+        var data = Buffer.alloc(1);
         data.writeUInt8("asdf", 0);
         callback(this.RESULT_SUCCESS, data);
     }

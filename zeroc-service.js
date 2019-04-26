@@ -2,19 +2,19 @@
 var util = require('util');
 var bleno = require('bleno');
 
-var SnakeCharacteristic = require('./snake-characteristic');
+var VideoCharacteristic = require('./snake-characteristic');
 // var PizzaToppingsCharacteristic = require('./pizza-toppings-characteristic');
 // var PizzaBakeCharacteristic = require('./pizza-bake-characteristic');
 
-function PizzaService() {
+function VideoService(CameraMan) {
     bleno.PrimaryService.call(this, {
         uuid: '17283985372901293487120938478700',
         characteristics: [
-            new SnakeCharacteristic(),
+            new VideoCharacteristic(CameraMan),
         ]
     });
 }
 
-util.inherits(PizzaService, bleno.PrimaryService);
+util.inherits(VideoService, bleno.PrimaryService);
 
-module.exports = PizzaService;
+module.exports = VideoService;
