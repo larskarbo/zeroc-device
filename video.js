@@ -8,4 +8,4 @@ class CameraMan {
     }
 }
 
-export default CameraMan
+module.exports = CameraMan
