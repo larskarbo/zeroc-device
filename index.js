@@ -40,7 +40,7 @@ bleno.on('advertisingStartError', error => {
 })
 
 bleno.on('accept', ca => {
-    console.log('ca: ', ca);
+    console.log('clientadress: ', ca);
 });
 
 console.log('yeah')

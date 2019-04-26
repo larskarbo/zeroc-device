@@ -3,12 +3,12 @@ var bleno = require('bleno');
 
 function SnakeCharacteristic(pizza) {
     bleno.Characteristic.call(this, {
-        uuid: '13333333333333333333333333330001',
+        uuid: '17283985372901293487120938478701',
         properties: ['read', 'write'],
         descriptors: [
             new bleno.Descriptor({
-                uuid: '2901',
-                value: 'Gets or sets the type of pizza crust.'
+                uuid: '1234',
+                value: 'Starts video (?)'
             })
         ]
     });
@@ -19,6 +19,7 @@ function SnakeCharacteristic(pizza) {
 util.inherits(SnakeCharacteristic, bleno.Characteristic);
 
 SnakeCharacteristic.prototype.onWriteRequest = function (data, offset, withoutResponse, callback) {
+    console.log('writerequest')
     if (offset) {
         callback(this.RESULT_ATTR_NOT_LONG);
     }
@@ -40,6 +41,7 @@ SnakeCharacteristic.prototype.onWriteRequest = function (data, offset, withoutRe
 };
 
 SnakeCharacteristic.prototype.onReadRequest = function (offset, callback) {
+    console.log('readrequest')
     if (offset) {
         callback(this.RESULT_ATTR_NOT_LONG, null);
     }
