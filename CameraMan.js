@@ -22,8 +22,8 @@ class CameraMan {
         this.isRecording = true
 
         const cmd = `raspivid -o video.h264 -t 10000`
-        
-        child = exec(cmd, function (error, stdout, stderr) {
+
+        const child = exec(cmd, function (error, stdout, stderr) {
             sys.print('stdout: ' + stdout);
             sys.print('stderr: ' + stderr);
             if (error !== null) {
