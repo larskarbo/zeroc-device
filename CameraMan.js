@@ -1,6 +1,8 @@
 
 var sys = require('sys')
-var exec = require('child_process').exec;
+const exec = util.promisify(require('child_process').exec);
+
+const util = require('util');
 
 class CameraMan {
     constructor() {
@@ -18,18 +20,16 @@ class CameraMan {
         // }, 1000)
     }
 
-    startRecording() {
+    async startRecording() {
         this.isRecording = true
         const name = Math.round( Math.random() * 10000 )
         const cmd = `raspivid -o ${name}.mp4 -t 10000`
 
-        const child = exec(cmd, function (error, stdout, stderr) {
-            sys.print('stdout: ' + stdout);
-            sys.print('stderr: ' + stderr);
-            if (error !== null) {
-                console.log('exec error: ' + error);
-            }
-        });
+        await exec(cmd);
+        await exec(`~/dropbox_uploader.sh upload ${name}.mp4 /`)
+        const { stdout, stderr } = await exec(`~/dropbox_uploader.sh share /${name}.mp4`)
+        console.log('link: ', stdout);
+
     }
 }
 
