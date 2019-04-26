@@ -66,15 +66,9 @@ SnakeCharacteristic.prototype.onReadRequest = function (offset, callback) {
     }
 };
 
-SnakeCharacteristic.prototype.onSubscribe = function (offset, callback) {
-    console.log('subscribing!!!!!')
-    console.log('offset: ', offset);
-
-    this.cameraMan.onChange((r) => {
-        var data = new Buffer(1);
-        data.writeUInt8(r, 0);
-        this.updateValueCallback(data);
-    })
+SnakeCharacteristic.prototype.onSubscribe = function (maxValueSize, updateValueCallback) {
+    console.log(`Counter subscribed, max value size is ${maxValueSize}`);
+    this.updateValueCallback = updateValueCallback
 };
 
 module.exports = SnakeCharacteristic;
