@@ -7,7 +7,11 @@
     "bleno": "^0.5.0",
     "util": "^0.11.1"
   },
+  "scripts": {
+    "yay": "git ac -m 'upd' && git push pi"
+  },
   "optionalDependencies":{
-    "xpc-connection": "git://github.com/taoyuan/node-xpc-connection.git"
+    "xpc-connection": "git://github.com/taoyuan/node-xpc-connection.git",
+    "bluetooth-hci-socket": "^0.5.1"
   }
 }
