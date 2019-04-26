@@ -7,3 +7,5 @@ class CameraMan {
         this.isRecording = false
     }
 }
+
+export default CameraMan
