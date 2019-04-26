@@ -47,3 +47,5 @@ class CounterCharacteristic extends bleno.Characteristic {
         this.handle = null;
     }
 }
+
+module.exports = CounterCharacteristic
