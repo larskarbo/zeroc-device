@@ -2,7 +2,7 @@ var util = require('util');
 var bleno = require('bleno');
 
 class SnakeCharacteristic extends bleno.Characteristic {
-    constructor() {
+    constructor(CameraMan) {
         super({
             uuid: '17283985372901293487120938478701',
             properties: ['read', 'write', 'notify'],
