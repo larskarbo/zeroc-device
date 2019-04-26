@@ -29,6 +29,7 @@ SnakeCharacteristic.prototype.onWriteRequest = function (data, offset, withoutRe
     else {
         var shouldRecord = data.readUInt8(0);
         console.log('shouldRecord: ', shouldRecord);
+        this.cameraMan.startRecording()
         callback(this.RESULT_SUCCESS);
         // case pizza.PizzaCrust.NORMAL:
         // case pizza.PizzaCrust.DEEP_DISH:
