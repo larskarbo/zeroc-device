@@ -27,7 +27,8 @@ SnakeCharacteristic.prototype.onWriteRequest = function (data, offset, withoutRe
         callback(this.RESULT_INVALID_ATTRIBUTE_LENGTH);
     }
     else {
-        // var crust = data.readUInt8(0);
+        var shouldRecord = data.readUInt8(0);
+        console.log('shouldRecord: ', shouldRecord);
         callback(this.RESULT_SUCCESS);
         // case pizza.PizzaCrust.NORMAL:
         // case pizza.PizzaCrust.DEEP_DISH:
