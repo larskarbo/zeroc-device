@@ -48,7 +48,7 @@ SnakeCharacteristic.prototype.onReadRequest = function (offset, callback) {
     }
     else {
         var data = Buffer.alloc(1);
-        data.writeUInt8("asdf", 0);
+        data.writeUInt8(1, 0);
         callback(this.RESULT_SUCCESS, data);
     }
 };
