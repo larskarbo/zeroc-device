@@ -3,7 +3,6 @@ var sys = require('sys')
 var util = require('util')
 const exec = util.promisify(require('child_process').exec);
 
-const util = require('util');
 
 class CameraMan {
     constructor() {
