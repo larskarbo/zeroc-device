@@ -20,3 +20,5 @@ bleno.on('stateChange', function (state) {
         bleno.stopAdvertising();
     }
 });
+
+console.log('yeah')
