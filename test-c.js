@@ -1,3 +1,6 @@
+
+var bleno = require('bleno');
+
 class CounterCharacteristic extends bleno.Characteristic {
     constructor() {
         super({
