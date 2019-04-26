@@ -1,7 +1,7 @@
 var util = require('util');
 var bleno = require('bleno');
 
-class CounterCharacteristic extends bleno.Characteristic {
+class SnakeCharacteristic extends bleno.Characteristic {
     constructor() {
         super({
             uuid: '17283985372901293487120938478701',
