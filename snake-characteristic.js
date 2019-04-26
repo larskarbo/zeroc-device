@@ -4,7 +4,7 @@ var bleno = require('bleno');
 function SnakeCharacteristic(CameraMan) {
     bleno.Characteristic.call(this, {
         uuid: '17283985372901293487120938478701',
-        properties: ['read', 'write'],
+        properties: ['read', 'write', 'notify'],
         descriptors: [
             new bleno.Descriptor({
                 uuid: '1234',
@@ -49,9 +49,14 @@ SnakeCharacteristic.prototype.onReadRequest = function (offset, callback) {
     else {
         var data = Buffer.alloc(1);
         data.writeUInt8(1, 0);
-        console.log('data: ', data.toJSON());
+        console.log('data: ', data.toJSON(this.cameraMan.isRecording));
         callback(this.RESULT_SUCCESS, data);
     }
+    cameraMan.onChange((r) => {
+        var data = new Buffer(1);
+        data.writeUInt8(r, 0);
+        this.updateValueCallback(data);
+    })
 };
 
 module.exports = SnakeCharacteristic;

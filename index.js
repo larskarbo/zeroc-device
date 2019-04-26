@@ -1,6 +1,6 @@
 var bleno = require('bleno');
 
-var CameraMan = require("./video")
+var CameraMan = require("./CameraMan")
 var cameraMan = new CameraMan()
 var VideoService = require('./zeroc-service');
 var videoService = new VideoService(cameraMan);
