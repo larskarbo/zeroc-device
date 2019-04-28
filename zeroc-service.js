@@ -2,8 +2,8 @@
 var util = require('util');
 var bleno = require('bleno');
 
-// var VideoCharacteristic = require('./snake-characteristic');
-var VideoCharacteristic = require('./test-c');
+var VideoCharacteristic = require('./snake-characteristic');
+// var VideoCharacteristic = require('./test-c');
 // var PizzaToppingsCharacteristic = require('./pizza-toppings-characteristic');
 // var PizzaBakeCharacteristic = require('./pizza-bake-characteristic');
 
