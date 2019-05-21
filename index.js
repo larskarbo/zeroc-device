@@ -5,6 +5,12 @@ var cameraMan = new CameraMan()
 var VideoService = require('./zeroc-service');
 var videoService = new VideoService(cameraMan);
 
+const express = require('express')
+const app = express()
+const port = 3000
+app.use(express.static('out'))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
 bleno.on('stateChange', function (state) {
     if (state === 'poweredOn') {
         console.log('power!')
@@ -33,6 +39,7 @@ bleno.on('advertisingStart', function (err) {
         bleno.setServices([
             videoService
         ]);
+        // cameraMan.startRecording()
     }
 });
 
@@ -41,8 +48,21 @@ bleno.on('advertisingStartError', error => {
     console.log('error: ', error);
 })
 
-bleno.on('accept', ca => {
-    console.log('clientadress: ', ca);
+bleno.on('accept', asdf => {
+    console.log('accept: ', asdf);
 });
+bleno.on('servicesSet', asdf => {
+    console.log('servicesSet: ', asdf);
+});
+bleno.on('servicesSetError', asdf => {
+    console.log('servicesSetError: ', asdf);
+});
+bleno.on('disconnect', asdf => {
+    console.log('disconnect: ', asdf);
+});
+bleno.on('rssiUpdate', asdf => {
+    console.log('rssiUpdate: ', asdf);
+});
+
 
 console.log('yeah')
