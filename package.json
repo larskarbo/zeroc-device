@@ -4,11 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "args": "^5.0.1",
     "bleno": "^0.5.0",
     "express": "^4.16.4",
+    "fs-extra": "^8.0.1",
     "globby": "^9.2.0",
     "luxon": "^1.12.1",
+    "puppeteer": "^1.17.0",
     "raspivid-stream": "^0.2.1",
+    "react-image-crop": "^7.0.3",
     "sleep-promise": "^8.0.1",
     "util": "^0.11.1"
   },
@@ -16,7 +20,7 @@
     "yay": "git ac -m 'upd' && git push pi"
   },
   "optionalDependencies": {
-    "xpc-connection": "git://github.com/taoyuan/node-xpc-connection.git",
-    "bluetooth-hci-socket": "^0.5.1"
+    "bluetooth-hci-socket": "^0.5.1",
+    "xpc-connection": "git://github.com/taoyuan/node-xpc-connection.git"
   }
 }
