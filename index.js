@@ -5,10 +5,36 @@ var cameraMan = new CameraMan()
 var VideoService = require('./zeroc-service');
 var videoService = new VideoService(cameraMan);
 
-const express = require('express')
-const app = express()
+var util = require('util')
+const exec = util.promisify(require('child_process').exec);
+// const express = require('express')
+const cors = require('cors')
+
+var express        =        require("express");
+var bodyParser     =        require("body-parser");
+var app            =        express();
+app.use(cors())
+// const app = express()
 const port = 3000
 app.use(express.static('out'))
+// var bodyParser = require('body-parser')
+// app.use( bodyParser.json() );       // to support JSON-encoded bodies
+// app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+//     extended: true
+// }));
+
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.get("/truecoach", function(req,res){
+    console.log('req.body: ', req.query);
+    // console.log('req.body.crop: ', req.body.crop);
+    res.send({jsfdio:"jofsi"})
+    exec(`node uploadToTruecoach.js --exercise ${req.query.exercise} --video ${req.query.name}`)
+})
+
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 bleno.on('stateChange', function (state) {

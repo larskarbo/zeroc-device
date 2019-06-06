@@ -9,7 +9,6 @@ args
 
 
 const { video, exercise } = args.parse(process.argv)
-
 const exercises = {
     "squat": 0,
     "press": 1,
@@ -27,13 +26,17 @@ const start = async () => {
     }
 
     let exint;
-    const browser = await puppeteer.launch({ headless: false, devtools: true });
+    // const browser = await puppeteer.launch({ headless: false, devtools: true });
+    const browser = await puppeteer.launch();
     const endpoint = browser.wsEndpoint();
     // console.log('endpoint: ', endpoint);
     const page = await browser.newPage();
     await page.goto('https://ssonlinecoaching.truecoach.co/client/workouts', { waitUntil: 'networkidle2' });
 
-    await page.$("input[type=email]").then(e => e.type("mail@larskarbo.no"))
+    await page.$("input[type=email]").then(e => {
+        console.log('e: ', e);
+        e.type("mail@larskarbo.no")
+    })
     await page.$("input[type=password]").then(e => e.type(process.env.PASSWORD))
     await page.$("button[type=submit]").then(e => e.click())
     await page.waitForNavigation({ waitUntil: 'networkidle0' })
