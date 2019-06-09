@@ -1,0 +1,7 @@
+{
+    "username": "pi",
+    "privateKey": "/Users/lars/.ssh/id_rsa",
+    "host": "zeroc.local",
+    "localPath": "/Users/lars/dev/zeroc-device",
+    "remotePath": "gzero"
+}

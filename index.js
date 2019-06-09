@@ -1,11 +1,15 @@
 var bleno = require('bleno');
-
+const path = require('path');
+const qs = require('qs');
 var CameraMan = require("./CameraMan")
 var cameraMan = new CameraMan()
 var VideoService = require('./zeroc-service');
 var videoService = new VideoService(cameraMan);
-
+const axios = require('axios')
+const { spawn } = require('child_process');
+const FormData = require('form-data')
 var util = require('util')
+var fs = require('fs')
 const exec = util.promisify(require('child_process').exec);
 // const express = require('express')
 const cors = require('cors')
@@ -27,11 +31,32 @@ app.use(express.static('out'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/truecoach", function(req,res){
-    console.log('req.body: ', req.query);
+app.get("/truecoach", async function(req,res){
+    console.log('req.query: ', req.query);
+    const o = req.query
     // console.log('req.body.crop: ', req.body.crop);
     res.send({jsfdio:"jofsi"})
-    exec(`node uploadToTruecoach.js --exercise ${req.query.exercise} --video ${req.query.name}`)
+    const server = axios.create({
+        baseURL: 'http://157.230.25.171:3000',
+        headers: { 'X-Custom-Header': 'foobar' }
+    })
+
+    const pt = __dirname + '/out/' + req.query.name
+    const form = new FormData()
+    form.append('video123', fs.createReadStream(pt))
+    console.log("uploading")
+    server.post('/upload/' + req.query.exercise + "?" + qs.stringify(o), form, {
+        headers: form.getHeaders(),
+        maxContentLength: 5242889000
+    })
+        .then((res) => {
+            console.log('Done :)')
+        })
+        .catch((error) => {
+            console.log('Something went wrong :(')
+            console.error(error)
+        })
+
 })
 
 
