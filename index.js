@@ -31,6 +31,12 @@ app.use(express.static('out'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get("/deleteallfiles", async function (req, res) {
+    console.log('deleting all files')
+    await exec("rm ~/gzero/out/*")
+    res.send({ jsfdio: "jofsi" })
+})
+
 app.get("/truecoach", async function(req,res){
     console.log('req.query: ', req.query);
     const o = req.query
